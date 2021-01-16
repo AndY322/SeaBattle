@@ -1,3 +1,181 @@
-#login-window {
+@beige: #fffaf6;
+@gray: #7e7975;
+
+.font-styles(@font-size) {
+  font-family: 'Lato', Calibri, Arial, sans-serif;
+  font-size: @font-size;
+  font-weight: bold;
+}
+
+.icon(@url) {
+  background: @url no-repeat;
+  background-size: cover;
+}
+
+.position(@height, @width) {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 3px;
+  left: 0;
+  height: @height;
+  width: @width;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.container::before {
+  .position(100%, 100%);
+  background:
+    url(../img/rabstol_net_world_of_warships_11_1680x1050.png) 
+    no-repeat center center fixed;
+  background-size: cover;
+  opacity: 0.4;
+}
+
+.form {
+  /* Size and position */
+  width: 340px;
+  padding: 15px;
+  position: absolute;
+
+  /* Styles */
+  background: @beige;
+  border-radius: 5px;
+  color: @gray;
+  box-shadow:
+    0 2px 2px rgba(0,0,0,0.2),      
+    0 1px 5px rgba(0,0,0,0.2),      
+    0 0 0 12px rgba(255,255,255,0.4);
+}
+
+.form h1 {
+  .font-styles(15px);
+  color: lighten(@gray, 20%);
+  padding-bottom: 8px;
+  border-bottom: 1px solid lighten(@gray, 30%);
+  text-shadow: 0 2px 0 rgba(255,255,255,0.8);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.8);
+}
+
+.form h1 .log-in,
+.form h1 .sign-up {
+  display: inline-block;
+  text-transform: uppercase;
+}
+
+.form h1 .log-in {
+  color: darken(@gray, 5%);
+  padding-right: 2px;
+}
+
+.form h1 .sign-up {
+  color: darken(@beige, 30%);
+  padding-left: 2px;
+}
+
+.form div {
+  display: flex;
+}
+
+.form .float {
+  width: 50%;
+  border-top: 1px solid rgba(255,255,255,1);
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.form .float:first-of-type {
+  padding-right: 5px;
+}
+
+.form .float:last-of-type {
+  padding-left: 5px;
+}
+
+.form label {
+  display: flex;
+  padding: 0 0 5px 25px;
+  cursor: pointer;
+  .font-styles(13px);
+  text-transform: uppercase;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.8);
+  position: relative;
+}
+
+.icon-user::before,
+.icon-lock::before {
+  .position(20px, 20px);
+  margin: auto 0;
+}
+
+.icon-user::before {
+  .icon(url(../img/Username.png));
+}
+
+.icon-lock::before {
+  .icon(url(../img/password.png));
+}
+
+.form input[type=text],
+.form input[type=password] {
+  .font-styles(13px);
+  display: block;
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 5px;
+  border: 3px solid lighten(@gray, 40%);
+  border-radius: 5px;
+  transition: all 0.3s ease-out;
+  opacity: 0.6;
+}
+
+.form input[type=text]:hover,
+.form input[type=password]:hover {
+  border-color: lighten(@gray, 20%);
+}
+ 
+.form input[type=text]:focus,
+.form input[type=password]:focus {
+    border-color: lighten(@gray, 10%);;
+    outline: none;
+}
+
+.clearfix {
+  margin: 0px;
+}
+
+.form input[type=submit] {
+  /* Size and position */
+  width: 49%;
+  height: 38px;
+
+  /* Styles */
+  box-shadow: inset 0 1px rgba(255,255,255,0.3);
+  border-radius: 5px;
+  cursor: pointer;
+
+  /* Font styles */
+  .font-styles(14px);  
+  line-height: 38px;
   text-align: center;
+  
+  /* Color button */
+  margin-left: 1%;
+  background: linear-gradient(#fbd568, #ffb347);
+  border: 1px solid darken(@beige, 25%);
+  color: darken(@beige, 60%);
+  text-shadow: 0 1px rgba(255,255,255,0.3);
+}
+
+.form input[type=submit]:hover {
+  box-shadow:
+    inset 0 1px rgba(255,255,255,0.3),
+    inset 0 20px 40px rgba(255,255,255,0.15);
 }

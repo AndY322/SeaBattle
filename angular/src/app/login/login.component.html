@@ -1,5 +1,19 @@
-<div id="login-window">
-    <label>Enter your name:</label>
-    <input kendoTextBox [(ngModel)]="name" placeholder="name">
-    <button kendoButton onClick="window.open('/battleField', '_self')">Login</button>
+<div class="container">
+    <form class="form">
+        <h1><span class="log-in">Login in</span> or <span class="sign-up">Sing in</span></h1>
+        <div>
+            <p class="float">
+                <label for="login"><i class="icon-user"></i>Login</label>
+                <input type="text" name="login" placeholder="Login or email">
+            </p>
+            <p class="float">
+                <label for="password"><i class="icon-lock"></i>Password</label>
+                <input type="password" name="password" placeholder="Рassword">
+            </p>
+        </div>
+        <p class="clearfix">
+            <input type="submit" name="submit" value="Sing in"> 
+            <input type="submit" name="submit" value="Login in">
+        </p>      
+    </form>
 </div>
