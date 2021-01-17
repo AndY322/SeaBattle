@@ -27642,3 +27642,8 @@ div.k-scrollview.k-scrollview-light .k-scrollview-nav-wrap {
     background-color: rgba(255, 255, 255, 0.8);
 }
 
+.k-button {
+  background-color: #579bbb;
+  background-image: none;
+}
+

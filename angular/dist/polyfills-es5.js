@@ -466,7 +466,7 @@
     /***/
     function _(module, exports, __webpack_require__) {
       __webpack_require__(
-      /*! D:\C#\angular\node_modules\@angular-devkit\build-angular\src\webpack\es5-polyfills.js */
+      /*! D:\C#\Sea battle\angular\node_modules\@angular-devkit\build-angular\src\webpack\es5-polyfills.js */
       "voQr");
 
       __webpack_require__(
@@ -474,7 +474,7 @@
       "R0gw");
 
       module.exports = __webpack_require__(
-      /*! D:\C#\angular\src\polyfills.ts */
+      /*! D:\C#\Sea battle\angular\src\polyfills.ts */
       "hN/g");
       /***/
     },
