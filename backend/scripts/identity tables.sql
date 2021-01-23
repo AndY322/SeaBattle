@@ -24,10 +24,10 @@ go
 -- auto-generated definition
 create table AspNetUsers (
   Id uniqueidentifier not null,
-  UserName nvarchar(256),
-  NormalizedUserName nvarchar(256),
-  Email nvarchar(256),
-  NormalizedEmail nvarchar(256),
+  UserName nvarchar(256) not null unique,
+  NormalizedUserName nvarchar(256) not null unique,
+  Email nvarchar(256) not null unique,
+  NormalizedEmail nvarchar(256) not null unique,
   EmailConfirmed bit not null,
   PasswordHash nvarchar(1024),
   SecurityStamp nvarchar(1024),
