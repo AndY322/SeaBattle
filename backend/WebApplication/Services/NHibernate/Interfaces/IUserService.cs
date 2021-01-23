@@ -8,5 +8,8 @@ namespace Services.Interfaces
     /// </summary>
     public interface IUserService : IRepository<User>
     {
+        User GetByUserName(string userName);
+        
+        User GetByUserEmail(string email);
     }
 }

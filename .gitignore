@@ -2,3 +2,8 @@
 /backend/publish
 /backend/WebApplication/WebApplication/bin
 /backend/WebApplication/WebApplication/obj
+/backend/WebApplication/Services/obj
+/backend/WebApplication/Services/bin
+/backend/WebApplication/DomainModel/obj
+/backend/WebApplication/DomainModel/bin
+/backend/WebApplication/.idea

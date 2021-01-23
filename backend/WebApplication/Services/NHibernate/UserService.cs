@@ -10,5 +10,19 @@ namespace Services
         public UserService(ISession session) : base(session)
         {
         }
+
+        public User GetByUserName(string userName)
+        {
+            return GetQueryOver()
+                .Where(x => x.NormalizedUserName == userName.ToUpper())
+                .SingleOrDefault();
+        }
+
+        public User GetByUserEmail(string email)
+        {
+            return GetQueryOver()
+                .Where(x => x.NormalizedEmail == email.ToUpper())
+                .SingleOrDefault();
+        }
     }
 }

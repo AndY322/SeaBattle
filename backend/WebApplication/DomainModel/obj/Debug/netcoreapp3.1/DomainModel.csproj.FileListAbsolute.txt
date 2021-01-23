@@ -1,9 +1,0 @@
-D:\C#\Sea battle\backend\WebApplication\DomainModel\bin\Debug\netcoreapp3.1\DomainModel.deps.json
-D:\C#\Sea battle\backend\WebApplication\DomainModel\bin\Debug\netcoreapp3.1\DomainModel.dll
-D:\C#\Sea battle\backend\WebApplication\DomainModel\bin\Debug\netcoreapp3.1\DomainModel.pdb
-D:\C#\Sea battle\backend\WebApplication\DomainModel\obj\Debug\netcoreapp3.1\DomainModel.csprojAssemblyReference.cache
-D:\C#\Sea battle\backend\WebApplication\DomainModel\obj\Debug\netcoreapp3.1\DomainModel.csproj.CoreCompileInputs.cache
-D:\C#\Sea battle\backend\WebApplication\DomainModel\obj\Debug\netcoreapp3.1\DomainModel.AssemblyInfoInputs.cache
-D:\C#\Sea battle\backend\WebApplication\DomainModel\obj\Debug\netcoreapp3.1\DomainModel.AssemblyInfo.cs
-D:\C#\Sea battle\backend\WebApplication\DomainModel\obj\Debug\netcoreapp3.1\DomainModel.dll
-D:\C#\Sea battle\backend\WebApplication\DomainModel\obj\Debug\netcoreapp3.1\DomainModel.pdb

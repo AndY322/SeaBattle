@@ -1,10 +1,10 @@
-﻿using Microsoft.AspNetCore.Identity;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using DomainModel.Models.Identity;
+using NHIdentityUser = NHibernate.AspNetCore.Identity.IdentityUser;
 
 namespace DomainModel.Identity
 {
-    public class User : IdentityUser<string>
+    public class User : NHIdentityUser
     {
         public virtual ICollection<Role> Roles { get; protected set; }
         public virtual ICollection<UserLogin> UserLogins { get; protected set; }

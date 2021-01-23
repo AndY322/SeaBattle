@@ -10,7 +10,7 @@ namespace Services.NHibernate.Base.Interfaces
         void CloseTransaction();
         void Save(T entity);
         void Delete(T entity);
- 
-        IQueryOver<T> GetQueryOver { get; }
+
+        IQueryOver<T, T> GetQueryOver();
     }
 }

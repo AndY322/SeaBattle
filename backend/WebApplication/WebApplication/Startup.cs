@@ -1,8 +1,11 @@
+using DomainModel.Identity;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
+using NHibernate.AspNetCore.Identity;
 using Services.Extensions;
 
 namespace WebApplication
@@ -28,18 +31,26 @@ namespace WebApplication
 
             services.AddNHibernate(connStr);
             services.AddControllers();
+            services.Configure<IdentityOptions>(options =>
+            {
+                options.Password.RequireDigit = true;
+                options.Password.RequiredLength = 6;
+                options.User.AllowedUserNameCharacters =
+                    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
+                options.User.RequireUniqueEmail = false;
+                options.Lockout.MaxFailedAccessAttempts = 5;
+            });
+            services.AddDefaultIdentity<User>()
+                .AddRoles<Role>()
+                .AddHibernateStores();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            app.UseDeveloperExceptionPage();
             app.UseStaticFiles();
             app.UseAuthentication();
-
             app.UseRouting();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>

@@ -47,6 +47,6 @@ namespace Services.NHibernate.Base
             _session.Delete(entity);
         }
 
-        public virtual IQueryOver<T> GetQueryOver => _session.QueryOver<T>();
+        public virtual IQueryOver<T, T> GetQueryOver() => _session.QueryOver<T>();
     }
 }
