@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AccountModel } from "../models/account.model";
+import { AccountService } from "../services/account service";
 
 @Component({
     selector: 'home-app',
@@ -6,5 +8,21 @@ import { Component } from '@angular/core';
     styleUrls: ["login.component.less"]
 })
 export class LoginComponent {
-    name= '';
+    account!: AccountModel;
+    error!: string;
+
+    constructor(private accountService: AccountService) {
+        this.account = { } as AccountModel;
+    }
+
+    signIn() : void {
+        this.accountService.signIn(this.account).subscribe(x => {
+            window.open('/#/battleField', '_self')
+        },
+        error => {
+            if(error.status === 401) {
+                this.error = error.error;
+            }
+        })
+    };
 }

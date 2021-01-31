@@ -30,7 +30,7 @@ namespace WebApplication.Controllers
         public async Task<IActionResult> Get()
         {
             var users = await _userService.GetQueryOver().ListAsync();
-            return Content(users.ToString());
+            return Content(users.SingleOrDefault().ToString());
         }
         
         [HttpPost]
@@ -70,7 +70,9 @@ namespace WebApplication.Controllers
         [Route("[action]")]
         public async Task<IActionResult> SignIn(UserModel userModel)
         {
-            var user = _userService.GetByUserName(userModel.Login);
+            var user = _userService.GetByUserName(userModel.Login) ?? _userService.GetByUserEmail(userModel.Login);
+            if(user == null)
+                return Unauthorized("Incorrect login or password");
             var result = await _signInManager.PasswordSignInAsync(user, userModel.Password, true, false);
             return result.Succeeded ? Ok() : Unauthorized("Incorrect login or password");
         }

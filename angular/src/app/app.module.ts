@@ -5,11 +5,20 @@ import { AppRoutingModule } from './app-routing.module'
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InputsModule } from '@progress/kendo-angular-inputs';
+import { HttpClientModule } from "@angular/common/http";
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 
 @NgModule({
-    imports:      [ BrowserModule, AppRoutingModule, ButtonsModule, BrowserAnimationsModule, InputsModule],
+    imports:      [
+        BrowserModule,
+        AppRoutingModule, ButtonsModule,
+        BrowserAnimationsModule,
+        InputsModule,
+        HttpClientModule
+    ],
     declarations: [ AppComponent],
-    bootstrap:    [ AppComponent ]
+    bootstrap:    [ AppComponent ],
+    providers: [ { provide: LocationStrategy, useClass: HashLocationStrategy } ],
 })
 export class AppModule { }

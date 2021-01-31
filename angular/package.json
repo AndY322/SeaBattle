@@ -5,7 +5,7 @@
   "author": "Dmitry Mizernik",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng build --watch",
     "build": "ng build"
   },
   "dependencies": {
