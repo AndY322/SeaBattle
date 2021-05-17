@@ -9,7 +9,7 @@ import { AccountService } from "../services/account service";
 })
 export class LoginComponent {
     account!: AccountModel;
-    error!: string;
+    errors!: string[];
 
     constructor(private accountService: AccountService) {
         this.account = { } as AccountModel;
@@ -20,8 +20,8 @@ export class LoginComponent {
             window.open('/#/battleField', '_self')
         },
         error => {
-            if(error.status === 401) {
-                this.error = error.error;
+            if(error.status === 401 || error.status === 400) {
+                this.errors = error.error;
             }
         })
     };

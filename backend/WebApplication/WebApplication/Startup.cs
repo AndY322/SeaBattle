@@ -1,11 +1,14 @@
+using System.Reflection;
 using DomainModel.Identity;
+using DomainModel.Validators;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
 using NHibernate.AspNetCore.Identity;
+using Services.ActionFilters;
 using Services.Extensions;
 
 namespace WebApplication
@@ -30,7 +33,15 @@ namespace WebApplication
             var connStr = Configuration.GetConnectionString("DefaultConnection");
 
             services.AddNHibernate(connStr);
-            services.AddControllers();
+            services.AddControllers(options =>
+            {
+                options.Filters.Add(typeof(ValidatorActionFilter));
+            })
+                .ConfigureApiBehaviorOptions(options => 
+            {   
+                options.SuppressModelStateInvalidFilter = true;     
+            })
+                .AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<UserModelValidator>());
             services.Configure<IdentityOptions>(options =>
             {
                 options.Password.RequireDigit = true;

@@ -35,23 +35,23 @@ namespace WebApplication.Controllers
         
         [HttpPost]
         [Route("[action]")]
-        public async Task<IActionResult> Create(UserModel userModel)
+        public async Task<IActionResult> Create(RegistrationModel model)
         {
             var user = new User
             {
-                Email = userModel.Email,
-                UserName = userModel.Login
+                Email = model.Email,
+                UserName = model.Login
             };
             List<string> errors = new List<string>();
-            if(_userService.GetByUserName(userModel.Login) != null)
+            if(_userService.GetByUserName(model.Login) != null)
                 errors.Add("User with this login already exist");
             
-            if(_userService.GetByUserEmail(userModel.Email) != null)
+            if(_userService.GetByUserEmail(model.Email) != null)
                 errors.Add("User with this email already exist");
             
             foreach (var validator in _userManager.PasswordValidators)
             {
-                var validationResult = await validator.ValidateAsync(_userManager, user, userModel.Password);
+                var validationResult = await validator.ValidateAsync(_userManager, user, model.Password);
                 foreach (var error in validationResult.Errors)
                 {
                     errors.Add(error.Description);
@@ -61,7 +61,7 @@ namespace WebApplication.Controllers
             if (errors.Any())
                 return BadRequest(errors);
             
-            user.PasswordHash = _userManager.PasswordHasher.HashPassword(user, userModel.Password);
+            user.PasswordHash = _userManager.PasswordHasher.HashPassword(user, model.Password);
             await _userManager.CreateAsync(user);
             return Ok();
         }
@@ -72,9 +72,10 @@ namespace WebApplication.Controllers
         {
             var user = _userService.GetByUserName(userModel.Login) ?? _userService.GetByUserEmail(userModel.Login);
             if(user == null)
-                return Unauthorized("Incorrect login or password");
+                return Unauthorized(new [] {"Incorrect login or password"});
+            
             var result = await _signInManager.PasswordSignInAsync(user, userModel.Password, true, false);
-            return result.Succeeded ? Ok() : Unauthorized("Incorrect login or password");
+            return result.Succeeded ? Ok() : Unauthorized(new [] {"Incorrect login or password"});
         }
     }
 }

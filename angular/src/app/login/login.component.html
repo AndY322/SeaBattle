@@ -1,7 +1,9 @@
 <div class="container">
     <form class="form">
         <h1><span class="log-in">Log in</span> or <span class="sign-up">Sign up</span></h1>
-        <label>{{error}}</label>
+        <div class="errors" *ngIf="errors">
+            <label *ngFor="let error of errors">{{error}}</label>
+        </div>
         <div>
             <p class="float">
                 <label for="login"><i class="icon-user"></i>Login</label>
