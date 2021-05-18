@@ -35,7 +35,7 @@ namespace WebApplication.Controllers
         
         [HttpPost]
         [Route("[action]")]
-        public async Task<IActionResult> Create(RegistrationModel model)
+        public async Task<IActionResult> Register(RegistrationModel model)
         {
             var user = new User
             {

@@ -1,26 +1,29 @@
 <div class="container">
     <form class="form">
         <h1><span class="registration">Registration</span></h1>
+        <div class="errors" *ngIf="errors">
+            <label *ngFor="let error of errors">{{error}}</label>
+        </div>
         <div>
             <p class="float">
                 <label for="login"><i class="icon-user"></i>Login</label>
-                <input type="text" name="login" placeholder="Enter Login">
+                <input [(ngModel)]="this.registrationModel.login" type="text" name="login" placeholder="Enter Login">
             </p>
             <p class="float">
                 <label for="login"><i class="icon-email"></i>Email</label>
-                <input type="text" name="email" placeholder="Enter Email">
+                <input [(ngModel)]="this.registrationModel.email" type="text" name="email" placeholder="Enter Email">
             </p>
             <p class="float">
                 <label for="password"><i class="icon-lock"></i>Password</label>
-                <input type="password" name="password" placeholder="Enter Рassword">
+                <input [(ngModel)]="this.registrationModel.password" type="password" name="password" placeholder="Enter Password">
             </p>
             <p class="float">
                 <label for="repeat-password"><i class="icon-lock-key"></i>Repeat Password</label>
-                <input type="password" name="repeat-password" placeholder="Repeat Password">
+                <input [(ngModel)]="repeatPassword" type="password" name="repeat-password" placeholder="Repeat Password">
             </p>
         </div>
         <p class="clearfix">
-            <input type="submit" name="submit" value="Registration">
+            <input type="submit" name="submit" value="Registration" (click)="register()">
         </p>  
     </form>
 </div>
